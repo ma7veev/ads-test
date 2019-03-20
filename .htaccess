@@ -1,0 +1,29 @@
+Options +SymLinksIfOwnerMatch
+
+IndexIgnore */*
+
+RewriteEngine on
+RewriteBase /
+
+
+
+RewriteCond %{REQUEST_URI} !^/(web)
+RewriteRule ^assets/(.*)$ /public/assets/$1 [L]
+RewriteRule ^css/(.*)$ public/css/$1 [L]
+RewriteRule ^js/(.*)$ public/js/$1 [L]
+RewriteRule ^images/(.*)$ public/images/$1 [L]
+RewriteRule ^libs/(.*)$ public/libs/$1 [L]
+RewriteRule ^fonts/(.*)$ public/fonts/$1 [L]
+RewriteRule ^upload/(.*)$ public/upload/$1 [L]
+RewriteRule ^pdf/(.*)$ public/pdf/$1 [L]
+RewriteRule (.*) /public/$1
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /public/index.php
+
+
+
+
+
