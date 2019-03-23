@@ -15,6 +15,7 @@
 
 Auth::routes();
 
-    Route::get('/', 'AuthController@showLoginForm')->name('index');
+    Route::get('/', 'IndexController@index')->name('index');
+ //   Route::get('/', 'TestController@index')->name('test');
     Route::post('login', 'AuthController@login')->name('login');
     Route::post('logout', 'AuthController@logout')->name('logout');

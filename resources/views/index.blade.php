@@ -1,10 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
+   
+   
+   
    <div class="container">
-   
-      @component('auth.login')
-      @endcomponent
+      @if(Auth::check())
+         <div class="alert alert-success " role="alert">
+            <p>Hello, {{Auth::user()->username}}! You are logged in!
+               <a class="btn btn-warning" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+               </a>
+            </p>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+               @csrf
+            </form>
+         </div>
+      @else
+         @component('auth.login')
+         
+         @endcomponent
+      @endif
    </div>
+   @if(Auth::check())
+      @component('ads.catalog', compact('ads'))
    
+      @endcomponent
+   @endif
+
 @endsection
