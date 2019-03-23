@@ -16,7 +16,16 @@
 </head>
 <body>
 <div id="app">
-   
+   <div class="container">
+      @if(session('status'))
+         <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <p>{{session('status')}}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+      @endif
+   </div>
    <div class="container">
       <main class="py-4">
          @yield('content')

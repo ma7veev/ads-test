@@ -19,3 +19,4 @@ Auth::routes();
  //   Route::get('/', 'TestController@index')->name('test');
     Route::post('login', 'AuthController@login')->name('login');
     Route::post('logout', 'AuthController@logout')->name('logout');
+    Route::get('delete/{id}', 'AdsController@deleteItem')->name('delete');

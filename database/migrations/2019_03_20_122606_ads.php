@@ -18,6 +18,7 @@
                 $table -> bigIncrements('id');
                 $table -> string('title');
                 $table -> string('author_name');
+                $table -> integer('user_id')->nullable();
                 $table -> mediumText('description');
                 $table -> timestamps();
             });
