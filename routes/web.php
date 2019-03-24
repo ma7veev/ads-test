@@ -15,8 +15,10 @@
     Route ::post('login', 'AuthController@login') -> name('login');
     Route ::post('logout', 'AuthController@logout') -> name('logout');
     Route ::middleware('auth') -> group(function () {
-        Route ::get('delete/{id}', 'AdsController@deleteItem') -> name('delete');
-        Route ::get('edit', 'AdsController@editItem') -> name('edit');
-        Route ::post('create', 'AdsController@createItem') -> name('create');
+        Route ::get('delete/{id}', 'AdsController@deleteHandler') -> name('delete');
+        Route ::get('edit/{id}', 'AdsController@editItem') -> name('edit');
+        Route ::get('create', 'AdsController@createItem') -> name('create');
+        Route ::post('create-handler', 'AdsController@createHandler') -> name('create-handler');
+        Route ::post('edit-handler', 'AdsController@editHandler') -> name('edit-handler');
     });
     Route ::get('/{id}', 'AdsController@viewItem') -> name('view');

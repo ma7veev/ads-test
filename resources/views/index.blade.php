@@ -12,7 +12,7 @@
                                                      document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
                </a>
-               <a href="{{ route('edit') }}" class="btn btn-success ml-3">Create Ad</a>
+               <a href="{{ route('create') }}" class="btn btn-success ml-3">Create Ad</a>
             </p>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                @csrf
