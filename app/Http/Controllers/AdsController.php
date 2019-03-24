@@ -30,6 +30,10 @@
         public function editItem($id)
         {
             $ad = Ads ::find($id);
+    
+            if (is_null($ad)||$ad->isEmpty()) {
+                abort(404);
+            }
             if (Auth ::user() -> id !== $ad -> user_id) {
                 return redirect() -> route('index')
                                   -> with('status', 'Sorry, you cannot edit this ad!');
