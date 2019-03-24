@@ -3,7 +3,7 @@
       <div class="card-body">
          <div class="d-flex justify-content-between">
             <h5 class="card-title">{{$ad->title}}</h5>
-            <small>{{$ad->author_name}}</small>
+            <small class="font-weight-bold">{{$ad->author_name}}</small>
          </div>
          <p class="card-text">{{$ad->description}}</p>
          @if(Auth::user()->id ===$ad->user_id)

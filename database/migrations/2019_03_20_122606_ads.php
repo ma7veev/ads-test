@@ -18,15 +18,16 @@
                 $table -> bigIncrements('id');
                 $table -> string('title');
                 $table -> string('author_name');
-                $table -> integer('user_id')->nullable();
-                $table -> mediumText('description');
+                $table -> integer('user_id');
+                $table -> text('description');
                 $table -> timestamps();
             });
-            $i = 0;
+            $i = 1;
             while ($i<=40) {
                 $ads_model = new AdsModel;
                 $ads_model -> title = 'Title'.$i;
                 $ads_model -> author_name = 'Author'.$i;
+                $ads_model -> user_id = $i;
                 $ads_model -> description = $i.'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam atque delectus esse ex facilis fugiat ipsa quaerat quisquam, sed sequi ullam, unde voluptas! Dolore nam non porro ratione sed ut.';
                 $ads_model -> save();
                 $i++;
