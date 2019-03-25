@@ -30,8 +30,7 @@
         public function editItem($id)
         {
             $ad = Ads ::find($id);
-    
-            if (is_null($ad)||$ad->isEmpty()) {
+            if (is_null($ad)) {
                 abort(404);
             }
             if (Auth ::user() -> id !== $ad -> user_id) {
@@ -54,6 +53,9 @@
         public function viewItem($id)
         {
             $ad = Ads ::find($id);
+            if (is_null($ad)) {
+                abort(404);
+            }
             
             return view('ads.view', compact('ad'));
         }
@@ -61,12 +63,11 @@
         public function editHandler(Request $request)
         {
             $adQuery = Ads ::where(['id' => $request -> id]);
-            $ad = $adQuery->get();
-            if ($ad->isEmpty()) {
-                return redirect() -> route('index')
-                                  -> with('status', 'Ad is not found!');
+            $ad = $adQuery -> get();
+            if ($ad -> isEmpty()) {
+                return redirect() -> route('index') -> with('status', 'Ad is not found!');
             }
-            if (Auth ::user() -> id !== $ad-> first() -> user_id) {
+            if (Auth ::user() -> id !== $ad -> first() -> user_id) {
                 return redirect() -> route('index')
                                   -> with('status', 'Sorry, you cannot edit this ad!');
             }
@@ -82,7 +83,7 @@
                   'user_id'     => Auth ::user() -> id,
             ]);
             if ($updated) {
-                return redirect() -> route('view', ['id' => $ad ->first() -> id])
+                return redirect() -> route('view', ['id' => $ad -> first() -> id])
                                   -> with('status', 'The ad was successfully updated!');
             }
         }
